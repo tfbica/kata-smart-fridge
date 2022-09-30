@@ -28,7 +28,7 @@ public class FridgeShould {
 
         expiredMilk = new Item("Milk",
                 LocalDateTime.of(2021, 10, 17, 0, 0, 0),
-                "sealed",
+                ItemStatus.SEALED,
                 LocalDateTime.of(2021, 10, 18, 0, 0, 0));
         initialTime = LocalDateTime.of(2021, 10, 18, 0, 0, 0);
     }
@@ -48,7 +48,7 @@ public class FridgeShould {
                 LocalDateTime.of(2021, 10, 17, 0, 0, 0));
         given(internalClock.getTime()).willReturn(initialTime);
 
-        fridge.scanAddedItem("Milk", "17/10/21", "sealed");
+        fridge.scanAddedItem("Milk", "17/10/21", ItemStatus.SEALED);
 
         then(shelf).should().add(expiredMilk);
     }

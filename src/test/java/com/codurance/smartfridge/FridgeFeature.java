@@ -23,10 +23,10 @@ public class FridgeFeature {
         fridge.setCurrentDate("18/10/2021");
 
         fridge.signalFridgeDoorOpened();
-        fridge.scanAddedItem("Milk", "21/10/21", "sealed");
-        fridge.scanAddedItem("Cheese", "18/11/21", "sealed");
-        fridge.scanAddedItem("Beef", "20/10/21", "sealed");
-        fridge.scanAddedItem("Lettuce", "22/10/21", "sealed");
+        fridge.scanAddedItem("Milk", "21/10/21", ItemStatus.SEALED);
+        fridge.scanAddedItem("Cheese", "18/11/21", ItemStatus.SEALED);
+        fridge.scanAddedItem("Beef", "20/10/21", ItemStatus.SEALED);
+        fridge.scanAddedItem("Lettuce", "22/10/21", ItemStatus.SEALED);
         fridge.signalFridgeDoorClosed();
 
 //        fridge.showDisplay();
@@ -48,8 +48,8 @@ public class FridgeFeature {
         fridge.signalFridgeDoorClosed();
 
         fridge.signalFridgeDoorOpened();
-        fridge.scanAddedItem("Milk", "26/10/21", "opened");
-        fridge.scanAddedItem("Peppers", "23/10/21", "opened");
+        fridge.scanAddedItem("Milk", "26/10/21", ItemStatus.OPEN);
+        fridge.scanAddedItem("Peppers", "23/10/21", ItemStatus.OPEN);
         fridge.signalFridgeDoorClosed();
 
         fridge.simulateDayOver();  // 20
@@ -60,8 +60,8 @@ public class FridgeFeature {
         fridge.signalFridgeDoorClosed();
 
         fridge.signalFridgeDoorOpened();
-        fridge.scanAddedItem("Lettuce", "22/10/21", "opened");
-        fridge.scanAddedItem("Beef", "20/10/21", "opened");  // NEW
+        fridge.scanAddedItem("Lettuce", "22/10/21", ItemStatus.OPEN);
+        fridge.scanAddedItem("Beef", "20/10/21", ItemStatus.OPEN);  // NEW
         fridge.signalFridgeDoorClosed();
 
         fridge.signalFridgeDoorOpened();

@@ -29,7 +29,7 @@ public class Fridge {
         shelf.degradeItems();
     }
 
-    public void scanAddedItem(String name, String expiryDate, String sealed) {
+    public void scanAddedItem(String name, String expiryDate, ItemStatus sealed) {
         shelf.add(new Item(name,
                 internalClock.parseDateShortYear(expiryDate),
                 sealed,

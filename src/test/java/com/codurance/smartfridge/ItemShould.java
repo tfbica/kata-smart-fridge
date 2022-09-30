@@ -15,13 +15,16 @@ class ItemShould {
     void degrade_sealed_item() {
         Item item = new Item("Milk",
                 LocalDateTime.of(2021, 10, 17, 0, 0),
-                "sealed",
+                ItemStatus.SEALED,
                 LocalDateTime.of(2021, 10, 12, 0, 0));
 
         item.degradeItem();
 
-        assertThat(item.getExpiryDate()).isEqualTo(
-                LocalDateTime.of(2021, 10, 16, 23, 0));
+        Item expected = new Item("Milk",
+                LocalDateTime.of(2021, 10, 16, 23, 0),
+                ItemStatus.SEALED,
+                LocalDateTime.of(2021, 10, 12, 0, 0));
+        assertThat(item).isEqualTo(expected);
 
     }
 
@@ -29,14 +32,16 @@ class ItemShould {
     void degrade_opened_item() {
         Item item = new Item("Milk",
                 LocalDateTime.of(2021, 10, 17, 0, 0),
-                "opened",
+                ItemStatus.OPEN,
                 LocalDateTime.of(2021, 10, 12, 0, 0));
 
         item.degradeItem();
 
-        assertThat(item.getExpiryDate()).isEqualTo(
-                LocalDateTime.of(2021, 10, 16, 19, 0));
-
+        Item expected = new Item("Milk",
+                LocalDateTime.of(2021, 10, 16, 19, 0),
+                ItemStatus.OPEN,
+                LocalDateTime.of(2021, 10, 12, 0, 0));
+        assertThat(item).isEqualTo(expected);
     }
 
     @ParameterizedTest
@@ -53,7 +58,7 @@ class ItemShould {
     })
     void return_remaining_days(LocalDateTime expiryDate, LocalDate localDate, int expectedDaysRemaining) {
 
-        Item item = new Item("Milk", expiryDate, "sealed", expiryDate);
+        Item item = new Item("Milk", expiryDate, ItemStatus.SEALED, expiryDate);
         assertThat(item.daysRemaining(localDate.atStartOfDay())).isEqualTo(expectedDaysRemaining);
 
     }
